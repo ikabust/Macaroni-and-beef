@@ -136,14 +136,15 @@ phina.define("MainScene", {
         
         //移動＋表示＋終了
         this.update = function(app) {//app経由でキー情報を取得
-            var key = app.keyboard;
-            
+            const key = app.keyboard;
+            const m = app.mouse;
+
             //左右上下移動
             if (key.getKey("left")) { main_macaroni.x -= SPEED; }
             if (key.getKey("right")) { main_macaroni.x += SPEED; }
             
             //ジャンプ
-            if (key.getKey("up") && JUMP_FL == false) { 
+            if ((key.getKey("up") || m.getButtonUp("left")) && JUMP_FL == false) { 
                 //ジャンプ処理
                 JUMP_FL = true;
                 main_macaroni.physical.velocity.y = -JUMP_POWOE;
@@ -163,6 +164,7 @@ phina.define("MainScene", {
 
             //ゲームの終了判定
             if (back3.right < SCREEN_WIDTH+10) {
+                main_macaroni.x += vx;
                 if (main_macaroni.x > SCREEN_WIDTH/2) { 
                     //鍋に突っ込む
                     main_macaroni.x += 10; 
