@@ -138,7 +138,7 @@ phina.define("MainScene", {
         this.update = function(app) {//app経由でキー情報を取得
             const key = app.keyboard;
             const m = app.mouse;
-            const t = app.touch;
+            const t = app.pointer;
 
             //左右上下移動
             if (key.getKey("left")) { main_macaroni.x -= SPEED; }
