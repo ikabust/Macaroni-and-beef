@@ -145,7 +145,7 @@ phina.define("MainScene", {
             if (key.getKey("right")) { main_macaroni.x += SPEED; }
             
             //ジャンプ
-            if ((key.getKey("up") || m.getButtonUp("left") || t.getTouchStart()) && JUMP_FL == false) { 
+            if ((key.getKey("up") || m.getButtonUp("left") || t.getPointingStart()) && JUMP_FL == false) { 
                 //ジャンプ処理
                 JUMP_FL = true;
                 main_macaroni.physical.velocity.y = -JUMP_POWOE;
