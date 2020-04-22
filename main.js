@@ -147,14 +147,16 @@ phina.define("MainScene", {
 
             //ジャンプ
             if ((key.getKey("up") || m.getButtonUp("left") || t.getPointingStart()) && JUMP_FL == false) { 
-                //ジャンプ処理(ちょっと右にジャンプする)
-                main_macaroni.x += 2;
+                //ジャンプ処理
                 JUMP_FL = true;
                 main_macaroni.physical.velocity.y = -JUMP_POWOE;
                 main_macaroni.physical.gravity.y = GRAVITY;                
                 //アニメーション
                 anim.gotoAndPlay("jump");
                 //サウンド付けたかった、、、
+            } else {
+                //定位置に戻るように
+                if (main_macaroni.x > 100) {main_macaroni.x -= 3;}
             }
         };
         
@@ -283,6 +285,7 @@ phina.define("MainScene", {
             else {
                 //浮遊中は重力をかける
                 if (main_macaroni.y < GRAND){
+                    main_macaroni.x += vx;
                     main_macaroni.physical.gravity.y = GRAVITY; 
                     JUMP_FL = true;
                 }
