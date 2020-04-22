@@ -138,13 +138,14 @@ phina.define("MainScene", {
         this.update = function(app) {//app経由でキー情報を取得
             const key = app.keyboard;
             const m = app.mouse;
+            const t = app.touch;
 
             //左右上下移動
             if (key.getKey("left")) { main_macaroni.x -= SPEED; }
             if (key.getKey("right")) { main_macaroni.x += SPEED; }
             
             //ジャンプ
-            if ((key.getKey("up") || m.getButtonUp("left")) && JUMP_FL == false) { 
+            if ((key.getKey("up") || m.getButtonUp("left") || t.getTouchStart()) && JUMP_FL == false) { 
                 //ジャンプ処理
                 JUMP_FL = true;
                 main_macaroni.physical.velocity.y = -JUMP_POWOE;
