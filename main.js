@@ -156,7 +156,7 @@ phina.define("MainScene", {
                 //サウンド付けたかった、、、
             } else {
                 //定位置に戻るように
-                if (main_macaroni.x > 100) {main_macaroni.x -= 3;}
+                if (main_macaroni.x > 250) {main_macaroni.x -= 3;}
             }
         };
         
@@ -169,7 +169,7 @@ phina.define("MainScene", {
 
             //ゲームの終了判定
             if (back3.right < SCREEN_WIDTH+10) {
-                main_macaroni.x += vx;
+                main_macaroni.x += SPEED;
                 if (main_macaroni.x > SCREEN_WIDTH/2) { 
                     //鍋に突っ込む
                     main_macaroni.x += 10; 
@@ -363,9 +363,8 @@ phina.define("make_message", {
     init: function(score,lavel) {
         if (score <= 200) {
             lavel.message = "最高にまずいビーフシチューの完成だな！！"
-        } else if (score <= 500) {
+        } else if (score <= 450) {
             lavel.message = "まあ、まずまずといったところかな"
-            
         } else if (score <= 560) {
             lavel.message = "おいおい、もうシェフになった方が\nいいんじゃないか？最高だよ！"
         }
